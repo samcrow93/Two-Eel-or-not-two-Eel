@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --time=8:00:00
-#SBATCH --account=def-ibradbur
+#SBATCH --account=
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=samantha.crowley@dal.ca
+#SBATCH --mail-user=
 #SBATCH --mem=0
 #SBATCH --nodes=1
 #SBATCH --job-name=genome_index_eel
