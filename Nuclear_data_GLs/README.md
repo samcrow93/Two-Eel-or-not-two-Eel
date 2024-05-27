@@ -10,22 +10,22 @@ Have to go through the all_samples.txt file manually to figure out the numbers f
 Explanation for how this is done is given in actual jobscript
 ### a) Ultimately to do do the above (i.e. removing samples), run script 01_remove_lowdepth_indivs_beagle.sh
 
-### b) Rename files so they aren't so unwieldy (first chromo listed below, repeat for all other chromosome files too)
+b) Rename files so they aren't so unwieldy (first chromo listed below, repeat for all other chromosome files too)
 ```
 mv eels.NC_049201.1.beagle.gz.lowfilt.beagle.gz NC_049201.1.beagle.gz
 ```
-### c) Combine all chromosome beagle files together by running 02_combine_beagle.sh script
+c) Combine all chromosome beagle files together by running 02_combine_beagle.sh script
 
 
 
 ### 2) NGSLD
-### a) subsample concatenated, low-filtered beagle file to very roughly 2.5 million markers by selecting every 10th line
+a) subsample concatenated, low-filtered beagle file to very roughly 2.5 million markers by selecting every 10th line
 also remove first three columns (recommendation from https://github.com/therkildsen-lab/genomic-data-analysis/blob/master/markdowns/ld.md#ld-estimation)
 ```
 zcat eel_concat_like_copy.beagle.gz | awk 'NR % 10 == 0' | cut -f 4- | gzip  > subsampled_eel.beagle.gz
 ```
 
-### b) create position file that matches subsampled beagle file (which no longer has position info):
+b) create position file that matches subsampled beagle file (which no longer has position info):
 The line below will separate the position from chromosome by replacing _ with tab, then selects only the first 2 cols, then every 10 lines
 ```
 zcat eel_concat_like_copy.beagle.gz | sed 's/_/\t/2' | cut -f 1,2 | awk 'NR % 10 == 0' | gzip > subsampled_pos.txt.gz
@@ -33,7 +33,7 @@ zcat eel_concat_like_copy.beagle.gz | sed 's/_/\t/2' | cut -f 1,2 | awk 'NR % 10
 
 c) run 03_ngsld_concat.sh script
 
-### d) run 04_eel_LD_prune.sh script
+d) run 04_eel_LD_prune.sh script
 This will output a file with a list of chromosomes and positions of sites that are in linkage equilibrium
 Modify this file so that chromosomes and positions are separated by a tab instead of a :
 ```
@@ -58,7 +58,7 @@ Then, run 05_angsd_eel_ldpruned#.sh scripts (one for each chromosome, example fo
 
 
 ### 3) PCANGSD
-### a) need to create a virtual environment to run python
+a) need to create a virtual environment to run python
 Create this virtual environment under the /home/samcrow directory:
 ```
 virtualenv --no-download python_env
@@ -79,7 +79,7 @@ pip install numpy --no-index
 deactivate
 ```
 
-### b) run PCANGSD
+b) run PCANGSD
 Copy chromsnuc object from /home/samcrow/scratch/eels2.0/eels4.0 into ./align/nuc_angsd_out2 directory
 Submit jobs (one per chromosome file) for all (non-pruned) data:
 ```
@@ -91,7 +91,7 @@ First need to create chromsnuc_pruned with "NC_049201_ldpruned" etc; then submit
 while read chromsnuc_pruned; do sbatch --export=ALL,chromsnuc_pruned=$chromsnuc_pruned 07_pcangsd_ldpruned.sh; done < chromsnuc_pruned
 ```
 
-### c) run PCANGSD on all chromosomes together (concatenate beagle files):
+c) run PCANGSD on all chromosomes together (concatenate beagle files):
 Run 08_combine_beagle.sh and 09_combine_beagle_ldpruned.sh scripts
 Then run 10_pcangsd_concat_like_all.sh script (****NOTE: it will run out of memory even on a 500G node for the script as-is (i.e. with admixture etc.), BUT it will complete the covariance matrix which is all we need for the PCA**)
 
