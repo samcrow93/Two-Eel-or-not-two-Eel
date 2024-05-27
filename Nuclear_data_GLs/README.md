@@ -7,41 +7,8 @@ bcftools query -l eels.NC_049201.1.vcf > all_samples.tsv
 awk '{print $0,NR}' all_samples.tsv > all_samples.txt
 ```
 ### Have to go through the all_samples.txt file manually to figure out the numbers for the samples listed in the lownuc_samples.txt file above:
-### Below are the individuals (and non-sample samples) to remove and their order (row numbers):
-### **IMPORTANT** note that beagle file starts listing individuals at "IND0" (so, in list below, every ind should be numbered one less)**
-### Individuals will be in columns based on this: ind0=4, ind1=7, ind2=10, ind3=13 (i.e. column=ind*3 +4) (OR, column=ind*3 +1 to account for numbering issue
-#### BIS22010.realigned.bam 10  ** but actually want Ind9 in beagle file since it starts numbering at Ind0
-#### BTB22024.realigned.bam 56
-#### CNR22017.realigned.bam 79
-#### HRD22003.realigned.bam 142
-#### HRD22012.realigned.bam 151
-#### HRD22013.realigned.bam 152
-#### HRP22007.realigned.bam 164
-#### HRP22012.realigned.bam 169
-#### HRP22018.realigned.bam 175
-#### LMP22008.realigned.bam 203
-#### LMP22011.realigned.bam 206
-#### LMP22020.realigned.bam 215
-#### LMP22023.realigned.bam 218
-#### Negative2.realigned.bam 246
-#### Negative3.realigned.bam 247
-#### Negative4.realigned.bam 248
-#### NTC2.realigned.bam 249
-#### NTC.realigned.bam 250
-#### NWT22017.realigned.bam 265
-#### QVD22004.realigned.bam 272
-#### SRR12854740.realigned.bam 525
-#### SRR12854745.realigned.bam 530
-#### SRR12854817.realigned.bam 602
-#### SRR12854843.realigned.bam 628
-#### SRR12854958.realigned.bam 742
-#### STC22004.realigned.bam 805
-#### STC22008.realigned.bam 809
-#### STC22017.realigned.bam 818
-#### TRP22005.realigned.bam 833
-#### TRP22016.realigned.bam 844
-
-### ***a) Ultimately to do do the above (i.e. removing samples), run script 01_remove_lowdepth_indivs_beagle.sh
+### Explanation for how this is done is given in actual jobscript
+### a) Ultimately to do do the above (i.e. removing samples), run script 01_remove_lowdepth_indivs_beagle.sh
 
 ### b) Rename files so they aren't so unwieldy (first chromo listed below, repeat for all other chromosome files too)
 ```
