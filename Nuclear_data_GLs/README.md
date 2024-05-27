@@ -8,6 +8,7 @@ awk '{print $0,NR}' all_samples.tsv > all_samples.txt
 ```
 Have to go through the all_samples.txt file manually to figure out the numbers for the samples listed in the lownuc_samples.txt file above
 Explanation for how this is done is given in actual jobscript
+
 a) Ultimately to do do the above (i.e. removing samples), run script 01_remove_lowdepth_indivs_beagle.sh
 
 b) Rename files so they aren't so unwieldy (first chromo listed below, repeat for all other chromosome files too)
