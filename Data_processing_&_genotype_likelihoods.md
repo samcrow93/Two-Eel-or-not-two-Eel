@@ -1,25 +1,25 @@
-##### This section outlines steps taken from processing raw fastq files through to generation of genotype likelihoods with ANGSD #####
+## This section outlines steps taken from processing raw fastq files through to generation of genotype likelihoods with ANGSD #####
 
 
-###### 1.1) Set up directory structure:
-# Within directory where raw files are stored, create the following subdirectories:
-mkdir sets
-mkdir trim
-mkdir align
-mkdir angsd_out
-mkdir angsd_in
+### 1.1) Set up directory structure:
+Within directory where raw files are stored, create the following subdirectories:
+ mkdir sets
+ mkdir trim
+ mkdir align
+ mkdir angsd_out
+ mkdir angsd_in
 
-##### 1.2) Create parameters file (eels_WGS_params.txt)
-### The following text is within the parameters file (specify where software and genome is located):
-#locations
+### 1.2) Create parameters file (eels_WGS_params.txt)
+The following text is within the parameters file (specify where software and genome is located):
+locations
 #main directory for project (where raw fastq files are stored)
 projdir=/home/samcrow/scratch/eels2.0/eels4.0
 
-#sample info
-#genome file location (includes mitogenome)
+sample info
+genome file location (includes mitogenome)
 genome=/home/samcrow/scratch/eels2.0/eels4.0/genome/GCF_013347855.1_fAngAng1.pri_genomic.fna
 
-#genus
+genus
 genus=$(echo Anguilla)
 
 #software
