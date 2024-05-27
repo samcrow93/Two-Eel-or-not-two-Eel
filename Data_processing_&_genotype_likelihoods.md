@@ -17,11 +17,11 @@ locations
 #main directory for project (where raw fastq files are stored)
 projdir=/home/samcrow/scratch/eels2.0/eels4.0
 
-sample info
-genome file location (includes mitogenome)
+#sample info
+#genome file location (includes mitogenome)
 genome=/home/samcrow/scratch/eels2.0/eels4.0/genome/GCF_013347855.1_fAngAng1.pri_genomic.fna
 
-genus
+#genus
 genus=$(echo Anguilla)
 
 #software
