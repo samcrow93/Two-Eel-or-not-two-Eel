@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --time=12:00:00
-#SBATCH --account=def-ibradbur
+#SBATCH --account=
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=samantha.crowley@dal.ca
+#SBATCH --mail-user=
 #SBATCH --mem=10G
 #SBATCH --cpus-per-task=1
 #SBATCH --nodes=1
