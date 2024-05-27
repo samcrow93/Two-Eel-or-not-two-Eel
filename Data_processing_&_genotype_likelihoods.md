@@ -13,7 +13,7 @@ mkdir angsd_in
 ### 1.2) Create parameters file (eels_WGS_params.txt)
 The following text is within the parameters file (specify where software and genome is located):
 ```
-locations
+#locations
 #main directory for project (where raw fastq files are stored)
 projdir=/home/samcrow/scratch/eels2.0/eels4.0
 
