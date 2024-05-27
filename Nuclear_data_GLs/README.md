@@ -16,7 +16,8 @@ mv eels.NC_049201.1.beagle.gz.lowfilt.beagle.gz NC_049201.1.beagle.gz
 ```
 ### c) Combine all chromosome beagle files together by running 02_combine_beagle.sh script
 
-### 3) NGSLD
+
+### 2) NGSLD
 ### a) subsample concatenated, low-filtered beagle file to very roughly 2.5 million markers by selecting every 10th line
 ### also remove first three columns (recommendation from https://github.com/therkildsen-lab/genomic-data-analysis/blob/master/markdowns/ld.md#ld-estimation)
 ```
@@ -52,7 +53,8 @@ echo "NC_049201.1" > sites/chroms1.txt # etc
 ```
 ### Then, run 05_angsd_eel_ldpruned#.sh scripts (one for each chromosome, example for NC_049201 in this repository)
 
-### 2) PCANGSD
+
+### 3) PCANGSD
 ### a) need to create a virtual environment to run python
 ### Create this virtual environment under the /home/samcrow directory:
 ```
@@ -88,7 +90,8 @@ while read chromsnuc_pruned; do sbatch --export=ALL,chromsnuc_pruned=$chromsnuc_
 ### run 08_combine_beagle.sh and 09_combine_beagle_ldpruned.sh scripts
 ### then run 10_pcangsd_concat_like_all.sh script (****NOTE: it will run out of memory even on a 500G node for the script as-is (i.e. with admixture etc.), BUT it will complete the covariance matrix which is all we need for the PCA**)
 
-### 3) NGSadmix
+
+### 4) NGSadmix
 ### run ngsAdmix on concatenated, ld-pruned beagle file using 11_admix_ldpruned.sh script
 
 
