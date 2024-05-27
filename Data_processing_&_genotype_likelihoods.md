@@ -3,16 +3,16 @@
 
 ### 1.1) Set up directory structure:
 Within directory where raw files are stored, create the following subdirectories:
-
-```mkdir sets
-    mkdir trim
-    mkdir align
-    mkdir angsd_out
-    mkdir angsd_in```
-
-
+```
+mkdir sets
+mkdir trim
+mkdir align
+mkdir angsd_out
+mkdir angsd_in
+```
 ### 1.2) Create parameters file (eels_WGS_params.txt)
 The following text is within the parameters file (specify where software and genome is located):
+```
 locations
 #main directory for project (where raw fastq files are stored)
 projdir=/home/samcrow/scratch/eels2.0/eels4.0
@@ -33,7 +33,7 @@ bwamem2=/home/samcrow/programs/bwa-mem2-2.2.1_x64-linux/bwa-mem2
 
 #gatk
 gatk=/home/samcrow/programs/gatk-4.4.0.0/gatk
-
+```
 ##### 1.3) Create set files
 # This needs to be done because there are so many large files, so split them into sets to run on separate jobs
 # change into main working directory:
@@ -156,7 +156,5 @@ awk '$7 < 0.5 && /NC_049/' concat_depth.txt | awk '{print $10}' | sort -u >> low
 sed -i 's/\.realigned\.bam//g' lowmito_samples.txt
 ####### This will generate samples that need to be removed from analysis further on ######
 ####### Proceed to either 'B) Nuclear data: genotype likelihoods'; 'C) Nuclear data: genotype imputation'; or 'D) Mitochondrial data genotyping' sections for next steps
-
-
 
 
