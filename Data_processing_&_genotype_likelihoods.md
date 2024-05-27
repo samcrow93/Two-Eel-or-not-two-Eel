@@ -3,11 +3,13 @@
 
 ### 1.1) Set up directory structure:
 Within directory where raw files are stored, create the following subdirectories:
-    mkdir sets
+
+```mkdir sets
     mkdir trim
     mkdir align
     mkdir angsd_out
-    mkdir angsd_in
+    mkdir angsd_in```
+
 
 ### 1.2) Create parameters file (eels_WGS_params.txt)
 The following text is within the parameters file (specify where software and genome is located):
