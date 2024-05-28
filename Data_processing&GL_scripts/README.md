@@ -35,7 +35,7 @@ bwamem2=/home/samcrow/programs/bwa-mem2-2.2.1_x64-linux/bwa-mem2
 gatk=/home/samcrow/programs/gatk-4.4.0.0/gatk
 ```
 ### 1.3) Create set files
-This needs to be done because there are so many large files, so split them into sets to run on separate jobs
+This needs to be done because there are so many large files, so split them into sets to run on separate jobs.
 Change into main working directory:
 ```
 cd /home/samcrow/scratch/eels2.0/eels4.0
@@ -67,7 +67,7 @@ done
 This will generate .bam files sorted by position in the align/ directory
 
 ### 4.0) Refining alignments - Preparation
-Use the genome analysis toolkit (gatk) to remove sequence duplicates
+Use the genome analysis toolkit (gatk) to remove sequence duplicates.
 First, need to create a directory for the temporary files made by gatk:
 ```
 mkdir gatktemp
@@ -129,7 +129,7 @@ do
 sbatch --export=ALL,chromsnuc=$chromsnuc,paramfile=eels_WGS_params.txt,angsdparam=angsd_params.txt 09_angsd_eel.sh
 done < chromsnuc
 ```
-### 3) Convert bcf files output by ANGSD to vcf files:
+### 3) Convert bcf files output by ANGSD to vcf files.
 Submit 10_bcf_to_vcf.sh script as follows:
 ```
 while read chromsnuc
@@ -138,7 +138,7 @@ sbatch --export=ALL,chromsnuc=$chromsnuc,paramfile=eels_WGS_params.txt,angsdpara
 done < chromsnuc
 ```
 ## Filtering for depth
-### 1) Filter for super low-depth samples (to be removed prior to further analysis)
+### 1) Filter for super low-depth samples (to be removed prior to further analysis).
 a) First, need to calculate depths for each sample (nuclear and mito chromosomes)
 ```
 cd /home/samcrow/scratch/eels2.0/eels4.0/align
@@ -161,7 +161,7 @@ done
 ```
 This will return a file of all the coverage/depth info per sample concatenated, with the file name in a new column
 
-c) Next, need to search for samples with very low depth (do this for mito genomes and nuclear chromosomes)
+c) Next, need to search for samples with very low depth (do this for mito genomes and nuclear chromosomes).
 The following code searches for samples with mito genome coverage less than 15x (defined as "mid-coverage" by Watowich et al. 2023)
 ```
 awk '$7 < 15 && /NC_006531.1/' concat_depth.txt | awk '{print $10}' | sort -u > lowmito_samples.txt
@@ -174,7 +174,7 @@ Cleanup: Delete the ".realigned.bam" from each line in the file
 ```
 sed -i 's/\.realigned\.bam//g' lowmito_samples.txt
 ```
-The above code will generate samples that need to be removed from analysis further on
+The above code will generate samples that need to be removed from analysis further on.
 Proceed to either 'B) Nuclear data: genotype likelihoods'; 'C) Nuclear data: genotype imputation'; or 'D) Mitochondrial data genotyping' sections for next steps
 
 
