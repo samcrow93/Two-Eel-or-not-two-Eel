@@ -56,7 +56,7 @@ Use job script 01_fastp.sh. Trimmed files will be output into trim/ directory
 ### 3.0) Alignment
 First, need to index the genome- run script 02_index_genome.sh
 
-Next, do the alignment using the 03_bwamem2_align.sh script
+Next, do the alignment using the 03_bwamem2_align.sh script.
 Submit using the following command instead of normal sbatch:
 ```
 for i in {00..08}
