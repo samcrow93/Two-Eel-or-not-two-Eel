@@ -16,6 +16,11 @@ plink -vcf eel_mito_lowfilt.vcf.gz -aec -make-bed -set-missing-var-ids @:# -out 
 mkdir pca
 plink -vcf eel_mito_lowfilt.vcf.gz -aec -pca -out pca/eel_mito_lowfilt_pca
 ```
+The above code will run a PCA on only the first 20 principal components; to run on all (813) components:
+```
+plink -vcf eel_mito_lowfilt.vcf.gz -aec -pca 813 -out pca/eel_mito_lowfilt_pca
+```
+
 ### 5) How many variants in vcf file with low-depth samples removed?
 ```
 bcftools stats eel_mito_lowfilt.vcf.gz
