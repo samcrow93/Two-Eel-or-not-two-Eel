@@ -22,4 +22,4 @@ sed -e 's/\s\+/_/g' /home/samcrow/scratch/eel_ngsLD_out/ngsParalog/qc_sites.txt 
 zcat ../chr.beagle.gz | grep -f goodsites.txt -Fw | gzip > para_filt_chr.beagle.gz
 ```
 
-These filtered beagle files can then be used for a final round of ngsadmix analysis to ensure likely paralogous loci did not influence admixture patterns
+### These filtered beagle files can then be used as input for a final run of ngsadmix to ensure that patterns of admixture are not influenced by likely paralogous loci.
