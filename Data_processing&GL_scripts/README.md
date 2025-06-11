@@ -110,7 +110,7 @@ done
 ```
 bamfile=/home/samcrow/scratch/eels2.0/eels4.0/bamlist.tsv
 runname=eels
-midInd=670
+minInd=670
 minDepth=1700
 ```
 Also need to create bamlist.tsv:
