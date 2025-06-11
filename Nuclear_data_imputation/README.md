@@ -1,7 +1,9 @@
 ## Workflow to process data output by ANGSD and impute genotypes
 ### **Note that these analyses are not included in the manuscript (only those using genotype likelihoods are)
 
-### 1) First, need to concatenate all chromosomes together into one vcf file (in /imputed directory):
+### 1) First, need to impute beagle files by running 0.5_beagle_impute.sh script
+
+Next, concatenate all chromosomes together into one vcf file (in /imputed directory):
 ```
 bcftools concat -Oz  NC_0492*.1.vcf.gz > eel_concat.vcf.gz
 ```
